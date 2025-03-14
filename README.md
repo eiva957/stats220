@@ -11,5 +11,6 @@ This is my repo for STATS 220.
 
 * I am studying *computer science*
 * I am in my **final semester**
+* My favourite language I have learnt so far is [Java](https://www.java.com/en/)
 
 A meme that captures how I currently feel about my university studies is ![](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2tvOHJlOHowbW9ob3NtMGVzeXc3cGNzcjg5ZzdoZHB0aXZ2MHdicSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif)
