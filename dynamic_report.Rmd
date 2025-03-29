@@ -51,7 +51,7 @@ The average number of ads seen at a time was `r mean(latest_data$ad_count, na.rm
 
 ```{r}
 ggplot(latest_data, aes(x = ad_source)) +  
-  geom_bar(fill = "steelblue") +
+  geom_bar(fill = "blue") +
   labs(title = "Distribution of Ad Sources", x = "Ad Source", y = "Count") +
   theme_minimal()
 
