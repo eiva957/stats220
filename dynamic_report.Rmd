@@ -1,0 +1,62 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+library("tidyverse")
+
+```
+
+```{css}
+body {
+  font-family: Arial, sans-serif;
+  color: #343a40;
+  margin: 20px;
+  padding: 20px;
+}
+
+h1, h2, h3 {
+  color: #007bff;
+}
+}
+```
+
+## Advertising relevancy analysis 
+
+### Dataset
+
+The data set was collected by having a user submit a survey form every time they were show ads across the internet and were asked to rank the relevancy to them from 1 - 10.
+
+```{r load_data}
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQ9cO8b57Ml11LX05LU67mIwlXUV_kscApDO67cRdG0dDm01byim2WNT-48wOwFXubqqw2P9aTJHQx_/pub?gid=315106395&single=true&output=csv")
+
+latest_data <- logged_data %>% 
+  rename(
+    timestamp = `Timestamp`,
+    ad_source = `Where did you see this ads?`,
+    ad_count = `How many ads where you shown in one ad break on youtube, on news article and on your social media feed.`,
+    ad_relevance = `From 1 to 10 how much do you feel these ads apply to you?`,
+  )
+```
+
+### Summary
+
+The average number of ads seen at a time was `r mean(latest_data$ad_count, na.rm = TRUE)`, and the highest reported ad relevance score was `r max(latest_data$ad_relevance, na.rm = TRUE)`.
+
+
+### Data plots
+
+```{r}
+ggplot(latest_data, aes(x = ad_source)) +  
+  geom_bar(fill = "steelblue") +
+  labs(title = "Distribution of Ad Sources", x = "Ad Source", y = "Count") +
+  theme_minimal()
+
+ggplot(latest_data, aes(x = ad_source, y = ad_relevance)) +  
+  geom_bar(stat = "summary", fun = "mean", fill = "purple") +
+  labs(title = "Average Ad Relevance by Source", x = "Ad Source", y = "Average Relevance (1-10)") +
+  theme_minimal()
+```
